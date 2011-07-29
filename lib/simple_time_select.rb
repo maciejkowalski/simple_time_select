@@ -36,16 +36,21 @@ module ActionView::Helpers
           minute_options = []
           start_minute.upto(end_minute) do |minute|
             if minute%minute_interval == 0
-              ampm = minute < 720 ? ' AM' : ' PM'
               hour = minute/60
               minute_padded = zero_pad_num(minute%60)
-              hour_padded = zero_pad_num(hour)
-              ampm_hour = ampm_hour(hour)
+              val = "#{hour}:#{minute_padded}:00"
+
+	      if @options[:use_24]
+		ampm = ""
+                hour_padded = zero_pad_num(hour)
+	      else
+                ampm = minute < 720 ? ' AM' : ' PM'
+                hour_padded = zero_pad_num(ampm_hour(hour))
+	      end
               
-              val = "#{hour_padded}:#{minute_padded}:00"
               minute_options << ((val_minutes == minute) ? 
-                %(<option value="#{val}" selected="selected">#{ampm_hour}:#{minute_padded}#{ampm}</option>\n) :
-                %(<option value="#{val}">#{ampm_hour}:#{minute_padded}#{ampm}</option>\n)
+                %(<option value="#{val}" selected="selected">#{hour_padded}:#{minute_padded}#{ampm}</option>\n) :
+                %(<option value="#{val}">#{hour_padded}:#{minute_padded}#{ampm}</option>\n)
               )
             end
           end
