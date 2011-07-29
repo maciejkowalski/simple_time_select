@@ -40,7 +40,7 @@ module ActionView::Helpers
               minute_padded = zero_pad_num(minute%60)
               val = "#{hour}:#{minute_padded}:00"
 
-	      if @options[:use_24h]
+	      if @options[:use_24h].eql? true
 		ampm = ""
                 hour_padded = zero_pad_num(hour)
 	      else
