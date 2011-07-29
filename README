@@ -1,8 +1,5 @@
-Added support for 24h.
-Just paste :use_24h => true in hash ie:
-<%= time_select("place", "mon_start", {:default => Time.now.change(:hour => 10), :simple_time_select => true, :time_separator => "",         
-	 :use_24h => true, :start_hour => 8, :end_hour => 23} )%>
-
+This plugin is the same as tamoyal.
+But it returns only military time ie 23:30(NOT AM or PM).
 
 SIMPLE TIME SELECT PLUGIN
 
