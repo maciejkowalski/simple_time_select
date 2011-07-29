@@ -40,13 +40,8 @@ module ActionView::Helpers
               minute_padded = zero_pad_num(minute%60)
               val = "#{hour}:#{minute_padded}:00"
 
-	      if @options[:use_24h].eql? true
 		ampm = ""
                 hour_padded = zero_pad_num(hour)
-	      else
-                ampm = minute < 720 ? ' AM' : ' PM'
-                hour_padded = zero_pad_num(ampm_hour(hour))
-	      end
               
               minute_options << ((val_minutes == minute) ? 
                 %(<option value="#{val}" selected="selected">#{hour_padded}:#{minute_padded}#{ampm}</option>\n) :
